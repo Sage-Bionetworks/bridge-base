@@ -227,7 +227,7 @@ public class PropertiesConfig implements Config {
             return DEFAULT_ENV;
         }
         for (Environment env : Environment.values()) {
-            if (env.name().toLowerCase().equals(envName)) {
+            if (env.name().toLowerCase().equals(envName.toLowerCase())) {
                 return env;
             }
         }
