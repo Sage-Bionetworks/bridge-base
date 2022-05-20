@@ -224,10 +224,4 @@ public class PropertiesConfigTest {
         
         assertEquals(config.get("example.nested.interpolation"), "Testing This value should be 2000");
     }
-    
-    @Test
-    public void testExecutableJarResourceReference() throws IOException {
-        // This is essentially untestable without a jar file set up like an executable Spring Boot
-        // jar file. It has been manually tested. For most of our apps, no new code will execute.
-    }
 }

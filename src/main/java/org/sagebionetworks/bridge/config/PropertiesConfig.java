@@ -3,7 +3,6 @@ package org.sagebionetworks.bridge.config;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -152,22 +151,9 @@ public class PropertiesConfig implements Config {
 
     private static Properties setupPropertiesFromPath (final Path configTemplate) throws IOException {
         final Properties properties = new Properties();
-        
-        String path = configTemplate.toString();
-        // For executable jar files, Spring Boot creates a jar with embedded jar files that is not
-        // a standard format, and its URIs seem to reference a propriety FileSystem implementation.
-        // However, we can apparently sidestep this with some parsing of the URI.
-        if (path.contains("BOOT-INF")) {
-            path = path.substring(path.indexOf("/BOOT-INF")).replaceAll("!", "");
-            try (final InputStream in = PropertiesConfig.class.getResourceAsStream(path)) {
-                properties.load(in);
-            }
-        } else {
-            try (Reader templateReader = Files.newBufferedReader(configTemplate, StandardCharsets.UTF_8)) {
-                properties.load(templateReader);
-            }            
+        try (final Reader templateReader = Files.newBufferedReader(configTemplate, StandardCharsets.UTF_8)) {
+            properties.load(templateReader);
         }
-        
         return properties;
     }
 
