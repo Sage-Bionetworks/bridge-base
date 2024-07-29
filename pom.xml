@@ -12,7 +12,7 @@
         <bouncy.castle.version>1.52</bouncy.castle.version>
         <jackson.version>2.12.6</jackson.version>
         <java.version>1.8</java.version>
-        <logback.version>1.2.9</logback.version>
+        <logback.version>1.2.13</logback.version>
         <maven.compiler.release>8</maven.compiler.release>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -82,7 +82,12 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.2.4</version>
+            <version>1.2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.36</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -223,7 +228,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.7.6.201602180812</version>
+                <version>0.8.12</version>
                 <configuration>
                     <excludes>
                         <!-- no point in testing exceptions, since they are entirely boilerplate code -->
